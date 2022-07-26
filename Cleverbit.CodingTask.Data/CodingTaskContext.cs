@@ -11,6 +11,8 @@ namespace Cleverbit.CodingTask.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<MatchRegistration> MatchRegistrations { get; set; }
+        public DbSet<Match> Matches { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

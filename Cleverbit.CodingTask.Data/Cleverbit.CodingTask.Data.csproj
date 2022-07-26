@@ -4,12 +4,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20220725211409_seedusers.cs" />
+    <Compile Remove="Migrations\20220725211409_seedusers.Designer.cs" />
+  </ItemGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.27" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Cleverbit.CodingTask.Utilities\Cleverbit.CodingTask.Utilities.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
 </Project>
