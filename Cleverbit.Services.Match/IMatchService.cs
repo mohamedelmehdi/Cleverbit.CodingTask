@@ -8,5 +8,7 @@ namespace Cleverbit.Services.MatchSevice
     {
         int RegisterUser(int userid, int matchid);
         void RemoveUserRegistration(int userid, int matchid);
+        List<object> ListUserRegistrations();
+
     }
 }

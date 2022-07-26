@@ -32,11 +32,11 @@ namespace Cleverbit.CodingTask.Host.Controllers
         }
 
         // GET api/ping/with-auth
-        [HttpGet("with-auth")]
+        [HttpGet("AllMatches")]
         [Authorize]
-        public string GetWithAuth()
+        public IActionResult MatchesHistory()
         {
-            return $"Ping received with successful authorization. User Name : {User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value}";
+            return Ok(svcMatchService.ListUserRegistrations());
         }
     }
 }

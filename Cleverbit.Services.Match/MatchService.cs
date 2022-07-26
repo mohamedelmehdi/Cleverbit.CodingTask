@@ -3,6 +3,8 @@ using System;
 using Cleverbit.CodingTask.Data.Models;
 using Cleverbit.Services.MatchSevice;
 using System.Linq;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cleverbit.Services.MatchService
 {
@@ -28,6 +30,20 @@ namespace Cleverbit.Services.MatchService
             catch
             {
                 _context.Database.RollbackTransaction();
+                throw;
+            }
+        }
+        public List<object> ListUserRegistrations()
+        {
+            try
+            {
+                var res = _context.MatchRegistrations.Include(q => q.Match).Include(q => q.Winner);
+                return res.Select(x => new { Winner = x.Winner.UserName, Match = x.MatchId, Date = x.Match.ExpireDate})
+                    .OrderBy(k => k.Date).ToList<object>();
+
+            }
+            catch
+            {
                 throw;
             }
         }
